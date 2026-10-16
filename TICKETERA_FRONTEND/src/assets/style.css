@@ -1,0 +1,10 @@
+Actúa como un Diseñador Frontend Senior y Arquitecto CSS.
+
+OBJETIVO:
+Analizar, reestructurar y ampliar mi hoja de estilos 'style.css' para convertirla en un Design System completo y agnóstico basado en Estética Brutalista Rígida, listo para ser consumido por componentes de Vue 3.
+
+MODELO DE PENSAMIENTO Y RESTRICCIONES:
+1. Idioma y Nomenclatura Intuitiva: TODOS los nombres de clases, variables y comentarios DEBEN estar estrictamente en ESPAÑOL. Usa nombres descriptivos y semánticos (ej: .barra_busqueda_principal, .boton_peligro).
+2. Paleta Monocromática Estricta: Mantén el diseño ÚNICAMENTE en blanco, negro y escala de grises. Sin colores primarios/acentos por ahora.
+3. Categorización: 1. Reset/Variables. 2. Layout/Estructura. 3. Componentes de UI. 4. Estados Especiales. 5. Clases Utilitarias.
+4. Cobertura de Casos Borde: Añade clases para SPAs (searchbars, badges de estado, alertas, modales, empty states) para que la IA (Cline) no invente estilos.

@@ -1,0 +1,42 @@
+{% extends "home/home_layout.html" %}
+
+{% block title %}Ingresar | Bug Tracker{% endblock %}
+
+{% block content %}
+<section class="form-card">
+    <header class="form-header">
+        <h2 class="form-title">Bienvenido</h2>
+        <p class="form-subtitle">Ingresa tus credenciales para continuar.</p>
+    </header>
+
+    <form action="{{ url_for('auth.login') }}" method="POST" class="main-form">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="ejemplo@correo.com" required autofocus>
+        </div>
+      
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" name="password" placeholder="********" required>
+        </div>
+
+        {% if msj %}
+            <p class="error-message">{{ msj }}</p>
+        {% endif %}
+
+        <div class="form-options">
+            <label class="checkbox-container">
+                <input type="checkbox" name="recordarme" value="recordarme"> 
+                <span>Recordarme</span>
+            </label>
+        </div>
+
+        <button type="submit" class="btn-main">Entrar al Sistema</button>
+    </form>
+
+    <footer class="form-footer">
+        <span>¿No tienes cuenta?</span>
+        <a href="{{ url_for('auth.registrate') }}" class="alt-link">Regístrate aquí</a>
+    </footer>
+</section>
+{% endblock %}

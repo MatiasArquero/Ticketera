@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Bug Tracker{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    
+    {% block styles %}{% endblock %}
+</head>
+
+<body class="portada-body">
+    <div class="main-wrapper">
+        
+        <header class="portada-header">
+            <div class="header-inner">
+                <h3 class="brand-logo">BUG TRACKER</h3>
+                <nav class="portada-nav">
+                    <a class="nav-link" href="{{ url_for('home.home') }}">Inicio</a>
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    <a class="nav-link" href="{{ url_for('auth.registrate') }}">Registro</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="portada-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="portada-footer">
+            <p>Matias Arquero &copy; 2026 | Portafolio IT</p>
+        </footer>
+
+    </div>
+</body>
+</html>

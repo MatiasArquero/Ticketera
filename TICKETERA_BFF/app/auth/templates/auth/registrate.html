@@ -1,0 +1,55 @@
+{% extends "home/home_layout.html" %}
+
+{% block title %}Registro | Bug Tracker{% endblock %}
+
+{% block content %}
+<section class="form-card">
+    <header class="form-header">
+        <h2 class="form-title">Crear Cuenta</h2>
+        <p class="form-subtitle">Únete al equipo y empieza a gestionar tus tickets.</p>
+    </header>
+
+    
+    <div class="brutal-error-box">
+        🔻ERROR: <div>{{ ERROR }}</div>
+    </div>
+
+    <form action="{{ url_for('auth.registrate') }}" method="POST" class="main-form">
+
+        <div class="form-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" name="username" placeholder="matias_dev" required>
+        </div>
+
+        <div class="form-row-grid">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="Matias" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" name="apellido" placeholder="Arquero" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" name="email" placeholder="ejemplo@correo.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" name="password" placeholder="********" required>
+        </div>
+
+        <input type="hidden" name="rol" value="usuario">
+
+        <button type="submit" class="btn-main">Registrarse ahora</button>
+    </form>
+
+    <footer class="form-footer">
+        <span>¿Ya tienes cuenta?</span>
+        <a href="{{ url_for('auth.login') }}" class="alt-link">Inicia sesión</a>
+    </footer>
+</section>
+{% endblock %}

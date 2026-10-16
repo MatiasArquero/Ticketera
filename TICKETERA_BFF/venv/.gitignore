@@ -1,0 +1,13 @@
+#Entorno virtual
+.venv/
+venv/
+
+#Config de PyCharm
+.idea/
+
+#Archivos temp de Python
+__pycache__/
+*.pyc
+
+#Base de datos local (Util para SQLite)
+*.sqlite3

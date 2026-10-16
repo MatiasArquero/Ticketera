@@ -1,0 +1,14 @@
+{% extends "home/home_layout.html" %}
+
+{% block title %}Inicio | Bug Tracker{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+    <h1 class="hero-title">Rastrea fallos,<br>no papeles.</h1>
+    <p class="hero-lead">Un sistema de gestión de tickets diseñado para ser simple, rápido y visual. Mantén el control de tus proyectos y usuarios en un solo lugar.</p>
+    
+    <div class="hero-actions">
+        <a href="{{ url_for('auth.login') }}" class="btn-main">Entrar al Sistema</a>
+    </div>
+</section>
+{% endblock %}

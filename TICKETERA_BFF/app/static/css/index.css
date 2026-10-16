@@ -1,0 +1,332 @@
+/* ============================================================
+   ESTILOS MAESTROS NEUBRUTALISTAS - BUG TRACKER
+   ============================================================ */
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray-bg: #f8f8f8;
+    --shadow-solid: 8px 8px 0px var(--black);
+    --shadow-small: 4px 4px 0px var(--black);
+    --border-thick: 4px solid var(--black);
+    --border-medium: 3px solid var(--black);
+}
+
+/* 1. RESET Y BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    
+}
+
+/* El marco de 12px que envuelve toda la ventana */
+body.portada-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 12px solid var(--black);
+}
+
+/* 2. ESTRUCTURA (WRAPPERS) */
+.main-wrapper {
+    position: relative; /* <-- ESTO ES CLAVE */
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh; /* Para que siempre esté contenido dentro del marco */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.portada-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+/* 3. NAVEGACIÓN Y CABECERA */
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.brand-logo {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 20px;
+    border-bottom: 3px solid transparent;
+    transition: 0.2s ease;
+}
+
+.nav-link:hover {
+    border-bottom: 3px solid var(--black);
+}
+
+/* 4. COMPONENTE: TARJETA DE FORMULARIO (LOGIN/REGISTRO) */
+.form-card {
+    background: var(--white);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-solid);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.form-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* 5. FORMULARIOS (INPUTS Y LABELS) */
+.main-form .form-group {
+    margin-bottom: 20px;
+}
+
+.main-form label {
+    display: block;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.main-form input[type="text"],
+.main-form input[type="email"],
+.main-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: var(--border-medium);
+    border-radius: 0; /* Neubrutalismo puro: nada de redondeos */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    outline: none;
+    transition: 0.1s;
+}
+
+.main-form input:focus {
+    background-color: var(--gray-bg);
+    box-shadow: var(--shadow-small);
+    transform: translate(-2px, -2px);
+}
+
+/* Grid para Nombre/Apellido en Registro */
+.form-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* 6. COMPONENTE: BOTÓN MAESTRO (BTN-MAIN) */
+.btn-main {
+    display: block;
+    width: 100%; /* Por defecto en formularios */
+    background-color: var(--black);
+    color: var(--white);
+    padding: 16px;
+    border: var(--border-thick);
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: var(--shadow-small);
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.btn-main:hover {
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: var(--shadow-solid);
+    transform: translate(-4px, -4px);
+}
+
+.btn-main:active {
+    box-shadow: 0px 0px 0px var(--black);
+    transform: translate(4px, 4px);
+}
+
+/* Ajuste específico para el botón del Home que no es 100% ancho */
+.hero-actions .btn-main {
+    display: inline-block;
+    width: auto;
+    padding: 16px 40px;
+}
+
+/* 7. CONTENIDO DEL HOME (HERO) */
+.home-hero {
+    text-align: center;
+}
+
+.hero-title {
+    font-weight: 800;
+    font-size: 3.8rem;
+    line-height: 0.95;
+    margin-bottom: 20px;
+}
+
+.hero-lead {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #444;
+}
+
+/* 8. FOOTERS Y EXTRAS */
+.portada-footer {
+    position: absolute; /* Lo sacamos del flujo normal */
+    bottom: -20px;       /* Lo pegamos a 20px del borde inferior (el marco negro) */
+    left: 0;
+    right: 0;           /* Estas dos líneas centran el footer de lado a lado */
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;        /* Asegura que siempre esté por encima */
+}
+
+.error-message {
+    background: #ffdbdb;
+    border: 2px solid var(--black);
+    padding: 10px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.form-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.alt-link {
+    color: var(--black);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+/* Alerta de Error - Estilo Brutalista */
+.brutal-error-box {
+    display: flex;
+    background-color: #ffffff;
+    color: #000000;
+    border: 4px solid #000000;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: monospace; /* Fuente tipo consola para reforzar el estilo */
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-transform: uppercase; /* Opcional: Fuerza el texto en mayúsculas para más impacto */
+    
+    /* El truco brutalista: una sombra sólida y negra sin difuminado */
+    box-shadow: 5px 5px 0px 0px #000000; 
+}
+
+/* ============================================================
+   9. MAQUETACIÓN ESPECÍFICA DEL PERFIL (LAYOUT)
+   ============================================================ */
+
+/* Contenedor principal que se estira en el main-wrapper */
+.perfil-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Piso Superior: Divide Identidad de Dashboards */
+.perfil-top-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr; /* 60% Datos, 40% Dashboard */
+    gap: 20px;
+}
+
+/* Caja de Identidad: Foto a la izquierda, textos a la derecha */
+.user-identity-box {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Separación entre foto y datos */
+    background: var(--white);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-small);
+    padding: 20px;
+}
+
+/* Avatar Neubrutalista */
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--gray-bg);
+    border: var(--border-thick);
+    box-shadow: 4px 4px 0px var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+/* Caja del Dashboard (Superior Derecha) */
+.dashboard-summary-box {
+    background: var(--white);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-small);
+    padding: 20px;
+}
+
+/* Piso Inferior: El carrusel de Tickets infinitos */
+.tickets-horizontal-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permite el deslizamiento hacia el lado */
+    padding-bottom: 15px; /* Espacio para que la barra no tape la sombra */
+}
+
+/* Cada carta de Ticket dentro del scroll */
+.ticket-brutal-card {
+    flex: 0 0 300px; /* Crucial: No permite que se achiquen, se clavan en 300px */
+    background: var(--white);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-small);
+    padding: 20px;
+}
+
+/* Personalización de la barra de scroll estilo brutalista */
+.tickets-horizontal-scroll::-webkit-scrollbar {
+    height: 12px;
+}
+.tickets-horizontal-scroll::-webkit-scrollbar-track {
+    background: var(--white);
+    border: 3px solid var(--black);
+}
+.tickets-horizontal-scroll::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border: 1px solid var(--white);
+}

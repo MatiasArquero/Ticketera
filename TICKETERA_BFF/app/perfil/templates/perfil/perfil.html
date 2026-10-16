@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Bug Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body class="portada-body">
+
+    <div class="main-wrapper">
+        
+        <header class="header-inner">
+            <h1 class="brand-logo">BUG_TRACKER // PANEL</h1>
+            <nav>
+                <span class="nav-link" style="cursor: default;">HOLA, {{ usuario.username }}</span>
+                <a href="#" class="nav-link">TICKETS</a>
+                <a href="{{ url_for('auth.logout') }}" class="nav-link" style="color: #ff4444;">SALIR</a>
+            </nav>
+        </header>
+
+        {% if ERROR %}
+        <div class="brutal-error-box">
+            ⚠️ ERROR: {{ ERROR }}
+        </div>
+        {% endif %}
+
+        <div class="portada-content">
+            <div class="perfil-layout">
+                
+                /* ============================================================
+                   PISO SUPERIOR: Grid de 2 Columnas (Identidad + Dashboards)
+                   ============================================================ */
+                <div class="perfil-top-grid">
+                    
+                    <section class="user-identity-box">
+                        <div class="profile-avatar">
+                            {{ usuario.username[:2]|upper }}
+                        </div>
+                        <div class="user-info-text">
+                            <h2 class="form-title">{{ usuario.username }}</h2>
+                            <p style="margin-bottom: 5px;"><strong>ID:</strong> #{{ usuario.id }}</p>
+                            <p style="margin-bottom: 5px;"><strong>EMAIL:</strong> {{ usuario.email }}</p>
+                            <p style="margin-bottom: 5px;"><strong>ROL:</strong> {{ usuario.rol }}</p>
+                            <p style="font-size: 0.85rem; color: #555;"><strong>MIEMBRO DESDE:</strong> {{ usuario.fechaCreacion }}</p>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-summary-box">
+                        <h3 style="font-weight: 800; text-transform: uppercase; margin-bottom: 15px; font-size: 1.1rem; border-bottom: var(--border-medium); padding-bottom: 5px;">
+                            RENDIMIENTO_SEMANAL
+                        </h3>
+                        <div class="metrics-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <div style="border: var(--border-medium); padding: 10px; text-align: center;">
+                                <span style="font-size: 1.8rem; font-weight: 800; display: block;">04</span>
+                                <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">RESUELTOS</span>
+                            </div>
+                            <div style="border: var(--border-medium); padding: 10px; text-align: center; background-color: var(--black); color: var(--white);">
+                                <span style="font-size: 1.8rem; font-weight: 800; display: block;">02</span>
+                                <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">ACTIVOS</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+
+                /* ============================================================
+                   PISO INFERIOR: Carrusel Horizontal de Tickets (Ocupa todo el ancho)
+                   ============================================================ */
+                <h3 style="font-weight: 800; text-transform: uppercase; margin-top: 10px; font-size: 1.2rem;">
+    MIS_TICKETS_ASIGNADOS //
+</h3>
+
+<div class="tickets-horizontal-scroll">
+    {% if tickets %}
+        {% for ticket in tickets %}
+        <article class="ticket-brutal-card">
+            <span style="font-size: 0.75rem; font-weight: 800; color: #666; display: block; margin-bottom: 5px;">
+                TICKET #{{ ticket['id'] }}
+            </span>
+            <h4 style="font-weight: 800; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 10px; line-height: 1.2;">
+                {{ ticket['titulo'] }}
+            </h4>
+            <p style="font-size: 0.85rem; color: #333; margin-bottom: 15px; height: 40px; overflow: hidden; text-overflow: ellipsis;">
+                {{ ticket['descripcion'] }}
+            </p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="badge-estado" style="display: inline-block; border: var(--border-medium); padding: 4px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; background-color: var(--gray-bg);">
+                    {{ ticket['estado'] }}
+                </span>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div style="width: 100%; border: var(--border-medium); padding: 30px; text-align: center; background: var(--gray-bg);">
+            <p style="font-weight: 800; text-transform: uppercase; font-size: 1rem;">
+                NO SE ENCONTRARON TICKETS ASIGNADOS. ¡ESTÁS AL DÍA! 😎
+            </p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
